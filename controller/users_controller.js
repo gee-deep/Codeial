@@ -1,19 +1,24 @@
 const User = require('../models/user');
-
 module.exports.profile = function(req,res){
 
+    console.log(res.locals.user);
     return res.render('user_profile',{
         title: 'User Profile',
     });
 }
 
 module.exports.signUp = function(req,res){
+    if(req.isAuthenticated())
+        return res.redirect('/users/profile');
     return res.render('user_signup',{
         title: 'Codeial | Sign Up',
     });
 }
 
 module.exports.signIn = function(req,res){
+    if(req.isAuthenticated())
+        return res.redirect('/users/profile');
+        
     return res.render('user_signin',{
         title: 'Codeial | Sign In',
     });
@@ -42,5 +47,8 @@ module.exports.create = function(req,res){
             return res.redirect('back');
         }
     });
+}
 
+module.exports.createSession = function(req,res){
+    return res.redirect('/users/profile');
 }
