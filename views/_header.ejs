@@ -1,3 +1,40 @@
-<header>
-    Header
-</header>
+<link rel="stylesheet" href="/css/header.css">
+<div id="nav-container">
+    <div id="site-logo">
+        <a href="/">
+            <h4 id="logo-text">Codeial</h4>
+        </a>
+    </div>
+    <div id="nav-menu-container">
+        <ul>
+            <div id="nav-menu">
+            
+            <% if(locals.user) { %>
+                <div class="nav-link-item">
+                    <li>
+                        <a class="nav-link" href="/user/profile" >  <%= locals.user.name%></a>
+                    </li> 
+                </div>
+                <div class="nav-link-item">
+                    <li>
+                        <a class="nav-link" href="/user/sign-out" >Sign out</a>
+                    </li>
+                </div>    
+            <%} else { %>
+                <div class="nav-link-item">
+                    <li>
+                        <a class="nav-link" href="/user/sign-in">Sign In</a>
+                    </li>
+                </div>
+                <div class="nav-link-item">
+                    <li>
+                        <a class="nav-link" href="/user/sign-up">Sign Up</a>
+                    </li>
+                </div>
+                
+                
+            <% } %>
+        </ul>
+
+    </div>
+</div>

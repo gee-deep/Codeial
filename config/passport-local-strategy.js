@@ -1,5 +1,5 @@
 const passport = require('passport');
-const User = require('../models/user');
+const User = require('../models/users');
 const LocalStrategy = require('passport-local').Strategy;
 
 //authentication using passport
@@ -44,7 +44,7 @@ passport.checkAuthentication  =function(req,res,next){
     if(req.isAuthenticated())
         return next();
     else
-        return res.redirect('/users/sign-in');
+        return res.redirect('/user/sign-in');
 };
 passport.setAuthenticatedUser = function(req,res,next){
     if(req.isAuthenticated())
