@@ -1,9 +1,11 @@
 #nav-container {
-  height: 10vh;
-  width: 100vw;
+  height: 8vh;
+  width: 100%;
   margin: 0px;
   background-color: darkslategrey;
   display: flex; }
+  #nav-container .links {
+    list-style-type: none; }
   #nav-container a {
     text-decoration: none; }
   #nav-container #logo-text {

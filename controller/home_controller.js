@@ -1,6 +1,15 @@
+const Posts = require('../models/posts');
+
+
 module.exports.home = function(req,res){
-    console.log(req.cookies);
-    return res.render('home',{
-        title: "HomePage"
+ 
+    Posts.find({}).populate('user').exec(function(err,allPosts){
+        if(err){
+            return console.error(err);
+        }
+        return res.render('home',{
+            title: "HomePage",
+            posts: allPosts,
+        })
     });
 }

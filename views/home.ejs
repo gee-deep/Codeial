@@ -1,3 +1,31 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/home.css">
+
 <h1>
-    Codeial
+    Codeial / Home
 </h1>
+<hr>
+<% if(locals.user){ %>
+<section id="feed-post">
+    <form id="new-post-form" method="post" action='/post/create'>
+        <div>
+            <label for="post-content"></label>
+            <textarea id="post-content" name="content" cols="30" rows="3" placeholder="What is on Your Mind"></textarea>
+        </div>
+        <div>
+            <input type="Submit" value="POST" >
+        </div>
+    </form>    
+</section>
+<% } %>
+<div>
+    <h1>POST</h1>
+    <hr >
+</div>
+<section id="posts">
+    <% for (let post of posts) {%>
+        <div class="post ">
+                <p class="post description"> <b><i><%= post.user.name %></i></b>  : <%= post.content %> </p>
+        </div>
+    <% } %>
+</section>

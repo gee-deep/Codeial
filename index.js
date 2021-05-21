@@ -16,7 +16,6 @@ const MongoStore = require('connect-mongo')(session);
 app.use(sassMiddleware({
     src: './assets/scss',
     dest: './assets/css',
-    debug: true,
     prefix: '/css'
 
 }));
