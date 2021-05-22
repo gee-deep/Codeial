@@ -1,5 +1,7 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+<script src="https://use.fontawesome.com/b327d2b014.js"></script>
 
 <h1>
     Codeial / Home
@@ -10,7 +12,7 @@
     <form id="new-post-form" method="post" action='/post/create'>
         <div>
             <label for="post-content"></label>
-            <textarea id="post-content" name="content" cols="30" rows="3" placeholder="What is on Your Mind"></textarea>
+            <textarea id="post-content" name="content" cols="30" rows="3" placeholder="What is on Your Mind" required></textarea>
         </div>
         <div>
             <input type="Submit" value="POST" >
@@ -20,12 +22,34 @@
 <% } %>
 <div>
     <h1>POST</h1>
-    <hr >
 </div>
 <section id="posts">
     <% for (let post of posts) {%>
         <div class="post ">
-                <p class="post description"> <b><i><%= post.user.name %></i></b>  : <%= post.content %> </p>
+                <p class="post description"> 
+                    <b><i><%= post.user.name %></i></b>  : <%= post.content %> 
+                    <% if((locals.user) && (locals.user.id === post.user.id)){ %>
+                    <a href="/post/delete/<%= post.id %>"><i class="fas fa-minus-circle"></i></a>
+                        <% } %>
+                </p>
+                <% if(locals.user) { %>
+                    <div class="post-comment">
+                        <form action="/comment/create" method="post">
+                            <input type="text" name="comment" placeholder="Enter comment" required>
+                            <input type="hidden" name="post" value="<%= post._id%>">
+                            <input type="submit" value="Comment">
+                        
+                        </form>
+
+                    </div>
+                <%  }  %>
+                <div class="post-comment-<%= post._id%>">
+                    <% for (comment of post.comments) { %>
+                    
+                        <p><i><b><%= comment.user.name %></b>: </b></i><%= comment.comment %></p>
+                    
+                    <%  } %>
+                </div>
         </div>
     <% } %>
 </section>

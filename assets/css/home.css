@@ -1,5 +1,9 @@
 .description {
   font-size: 20px; }
-body{
-  padding-bottom:60px; 
-}
+
+.post {
+  border: 1px solid; }
+
+a {
+  text-decoration: none;
+  color: gray; }

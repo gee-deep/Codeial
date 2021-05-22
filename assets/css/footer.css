@@ -1,9 +1,7 @@
 footer {
-  position: fixed;
-  bottom: 0;
-  padding: 10px 10px 0px 10px;
-  height: 5vh;
+  position: relative;
+  bottom: 0px;
+  height: 3vh;
   background-color: darkslategrey;
   width: 100vw;
-  color: white;
-  margin-top: 100px; }
+  color: white; }
