@@ -1,0 +1,33 @@
+.sign-in{
+    display:flex;
+    flex-direction:column;
+    margin-top: 30px;
+    .heading{
+        text-align:center;
+    }
+    form{
+        align-items:center;
+    }
+    .sign-in-form{
+        
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        margin: 10px;
+        input{
+            width:60%;
+            height:40px;
+        }
+    }
+    .sign-in-form-submit{
+        display: flex;
+        justify-content: center;
+        button{
+            width:30%;
+            height:40px;
+        }
+
+    }
+
+
+}

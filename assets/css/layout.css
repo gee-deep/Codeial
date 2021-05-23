@@ -1,3 +1,19 @@
+* {
+  box-sizing: border-box; }
+
 body {
-  margin-top: 0;
-  text-align: center; }
+  background: #001024;
+  background: radial-gradient(circle, #001024 0%, #515155 100%);
+  color: white; }
+
+.container {
+  display: flex;
+  flex-wrap: wrap; }
+  .container .left {
+    width: 30%;
+    height: 100%; }
+  .container .middle {
+    width: 45%; }
+  .container .right {
+    width: 25%;
+    height: 100%; }

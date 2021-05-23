@@ -1,40 +1,20 @@
 <link rel="stylesheet" href="/css/header.css">
-<div id="nav-container">
-    <div id="site-logo">
-        <a href="/">
-            <h4 id="logo-text">Codeial</h4>
-        </a>
-    </div>
-    <div id="nav-menu-container">
-        <ul class="nav links">
-            <div id="nav-menu">
-            
-            <% if(locals.user) { %>
-                <div class="nav-link-item">
-                    <li>
-                        <a class="nav-link" href="/user/profile" >  <%= locals.user.name%></a>
-                    </li> 
-                </div>
-                <div class="nav-link-item">
-                    <li>
-                        <a class="nav-link" href="/user/sign-out" >Sign out</a>
-                    </li>
-                </div>    
-            <%} else { %>
-                <div class="nav-link-item">
-                    <li>
-                        <a class="nav-link" href="/user/sign-in">Sign In</a>
-                    </li>
-                </div>
-                <div class="nav-link-item">
-                    <li>
-                        <a class="nav-link" href="/user/sign-up">Sign Up</a>
-                    </li>
-                </div>
-                
-                
-            <% } %>
-        </ul>
 
+<div class="top-bar">
+    <div class="logo">
+        <h1 class="logo text"><a href="/">Codeial</a></h1>
+    </div>
+    <div class="nav-bar">
+        <% if(locals.user){ %>
+            <ul class="nav-bar items">
+                <li class="nav-bar-items link"><a href="/user/profile"><%= user.name %></a></li>
+                <li class="nav-bar-items link"><a href="/user/sign-out">Log Out</a></li>
+            </ul>
+        <%  } else { %>
+            <ul class="nav-bar items">
+                <li class="nav-bar-items link"><a href="/user/sign-in">Sign In</a></li>
+                <li class="nav-bar-items link"><a href="/user/sign-up">Sign Up</a></li>
+            </ul>
+        <%  } %>
     </div>
 </div>

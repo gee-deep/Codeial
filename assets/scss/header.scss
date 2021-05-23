@@ -1,41 +1,37 @@
-#nav-container{
+*{
+    box-sizing: border-box;
+}
 
-    height: 8vh;
+.top-bar{
+    display:flex;
+    align-items:center;
     width: 100%;
-    margin: 0px;
-    background-color: darkslategrey;
-    display: flex;
-    .links{
-        list-style-type: none;
-    }
-    a{
-        text-decoration:none;
-    }
-    #logo-text{
-        margin-top: 10px;
-        font-size: 40px;
-        font-style: bold;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-align: left;
-        margin-left: 7%;
-        color: white;
-    }
-    .nav-link {
+    padding: 5px;
+    border-bottom: 1px solid gray;
 
-        font-size: 20px;
-        color: white;
-
-    }
-    #nav-menu{
-        position: absolute;
-        right: 0;
-        display:flex;
-        text-align: right;
-        .nav-link-item{
-            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            margin: 20px;
-            margin-top: 10px;
+    .logo{
+        width:50%;
+        flex: 1;
+        a{
+            text-decoration:none;
+            color:white;
+            text-shadow: 2px;
         }
     }
-
+    .nav-bar{
+        display:flex;
+        align-items: center;
+        flex-direction: row-reverse;
+        .nav-bar-items{
+            list-style: none;
+            padding-right: 10px;
+            font-size:20px;
+            a{
+                text-decoration:none;
+                color:white;
+                text-shadow: 2px;
+            }
+        }
+    
+    }
 }

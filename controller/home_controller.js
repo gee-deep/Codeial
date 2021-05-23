@@ -21,23 +21,3 @@ module.exports.home = function(req,res){
     });
 }
 
-module.exports.deletePost = function(req,res){
-
-    Posts.findById(req.params.id, function(err,post){
-        if(err){
-            console.log('Error!!!',err);
-            return res.redirect('/');
-        }
-        if(!post || post.user != req.user.id){
-            console.log('Unauthorized');
-            return res.redirect('/');
-        }
-
-        post.remove();
-        Comments.deleteMany({post: req.params.id}, function(err){
-            console.log("Error in Deleting Comments.",err);
-        });
-        return res.redirect('/');
-
-    });
-}

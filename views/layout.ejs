@@ -12,7 +12,12 @@
     </head>
     <body>
         <%- include('_header'); %>
-        <%- body %>
+
+        <div class="container">
+            <div class="left"></div>
+            <div class="middle"><%- body %></div>
+            <div class="right"></div>
+        </div>
         <%- include('_footer'); %>
         <%- script %>
     </body>

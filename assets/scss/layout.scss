@@ -1,5 +1,26 @@
+*{
+    box-sizing: border-box;
+}
 
 body{
-    margin-top:0;
-    text-align: center;
+    background: rgb(0,16,36);
+    background: radial-gradient(circle, rgba(0,16,36,1) 0%, rgba(81,81,85,1) 100%);
+    color: white;
 }
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    .left{
+        width:30%;
+        height:100%
+    }
+    .middle{
+        width: 45%;
+    }
+    .right{
+        width:25%;
+        height:100%;
+    }
+
+}
+

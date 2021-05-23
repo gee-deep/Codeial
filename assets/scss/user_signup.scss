@@ -1,0 +1,34 @@
+.sign-up{
+    display:flex;
+    flex-direction:column;
+    margin-top: 30px;
+    .heading{
+        text-align:center;
+    }
+    form{
+        align-items:center;
+    }
+    .sign-up-form{
+        
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        margin: 10px;
+        input{
+            height:40px;
+            width:60%
+        }
+
+    }
+    .sign-up-form-submit{
+        display: flex;
+        justify-content: center;
+        button{
+            width:30%;
+            height:40px;
+        }
+
+    }
+
+
+}
