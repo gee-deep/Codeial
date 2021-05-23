@@ -1,7 +1,6 @@
 .sign-up {
   display: flex;
-  flex-direction: column;
-  margin-top: 30px; }
+  flex-direction: column; }
   .sign-up .heading {
     text-align: center; }
   .sign-up form {

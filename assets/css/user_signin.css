@@ -1,7 +1,6 @@
 .sign-in {
   display: flex;
-  flex-direction: column;
-  margin-top: 30px; }
+  flex-direction: column; }
   .sign-in .heading {
     text-align: center; }
   .sign-in form {

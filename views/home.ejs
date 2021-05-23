@@ -4,20 +4,10 @@
 <script src="https://use.fontawesome.com/b327d2b014.js"></script>
 
 <% if(locals.user){ %>
-<section id="feed-post">
-    <form id="new-post-form" method="post" action='/post/create'>
-        <div>
-            <label for="post-content"></label>
-            <textarea id="post-content" name="content" cols="30" rows="3" placeholder="What is on Your Mind" required></textarea>
-        </div>
-        <div>
-            <input type="Submit" value="POST" >
-        </div>
-    </form>    
-</section>
+    <%- include('_postform.ejs') -%>
 <% } %>
 <div>
-    <h1>POST</h1>
+    <h1> Recent POST</h1>
 </div>
 <section id="posts">
     <% for (let post of posts) {%>
