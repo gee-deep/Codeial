@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 .post-create-box{
     display:flex;
     flex-direction:column;
@@ -5,15 +8,19 @@
     width:100%;
     height: 200px;
     textarea{
-        
+        box-sizing: border-box;
         width:100%;
         padding: 10px;
         border-radius: 10px;
         border: 2px solid gray;
         margin-bottom: 5px;
+        min-height: 50px;
         height: 100px;
+        max-height: 120px;
+    
     }
     .submit{
+        flex-grow: 1;
         width:100%;
         height: 40px;
         border-radius: 10px;
