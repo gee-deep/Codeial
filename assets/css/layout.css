@@ -15,15 +15,17 @@ body {
   .container .left {
     width: 30%;
     height: 100%;
-    padding: 40px; }
+    margin-top: 30px;
+    padding-right: 20px; }
     .container .left h1 {
       text-align: center; }
   .container .middle {
-    margin: 30px;
+    margin-top: 30px;
     width: 45%; }
   .container .right {
     width: 30%;
     height: 100%;
-    padding: 40px; }
+    margin-top: 30px;
+    padding-left: 20px; }
     .container .right h1 {
       text-align: center; }

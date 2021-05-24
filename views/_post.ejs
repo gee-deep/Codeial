@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="/css/post.css">
+<div class="post-display-box">
+    <div class="post-header">
+            <h6 class="user-name"><%= post.user.name %></h6>
+            <a href="/post/delete/<%=post.id %>">x</a>
+    </div>
+    <div class="post-content">
+        <h3> <%= post.content %> </h3>
+    </div>
+    <div class="post-react">
+        <div class="post-react like">Like</div>
+        <div class="post-react comment">Comments</div>
+        <div class="post-react share">Share</div>
+    </div>
+</div>

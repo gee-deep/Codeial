@@ -1,6 +1,5 @@
 * {
-  box-sizing: border-box;
-  overflow-wrap: break-word; }
+  box-sizing: border-box; }
 
 .top-bar {
   display: flex;
