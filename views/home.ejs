@@ -6,9 +6,6 @@
 <% if(locals.user){ %>
     <%- include('_postform.ejs') -%>
 <% } %>
-<div>
-    <h1> Recent POST</h1>
-</div>
 <section id="posts">
     <% for (let post of posts) {%>
         <%- include('_post.ejs',{post:post}) -%>

@@ -1,7 +1,7 @@
 const Comment = require('../models/comments');
 const Post = require('../models/posts');
 
-module.exports.create = function(req, res){
+module.exports.createComment = function(req, res){
 
     Post.findById(req.body.post,function(err,post){
         if(err){
@@ -23,7 +23,9 @@ module.exports.create = function(req, res){
             post.save()
             return res.redirect('back');
         });
-    });
-    
-    
+    });    
+}
+
+module.exports.deleteComment = function(req,res){
+
 }
