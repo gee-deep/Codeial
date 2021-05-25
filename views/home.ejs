@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/css/home.css">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-
+<link rel="stylesheet" href="/css/post.css">
 <script src="https://use.fontawesome.com/b327d2b014.js"></script>
 
 <div class="left">
@@ -10,18 +10,22 @@
     <% if(locals.user){ %>
         <%- include('_postform.ejs') -%>
     <% } %>
-    <section id="posts">
+    <section id="posts-list-container">
         <% for (let post of posts) {%>
             <%- include('_post.ejs',{post:post}) -%>
         <% } %>
     </section>
 </div>
 <div class="right">
+    <% if(locals.user){ %>
     <h1>Friends</h1>
     <ol>
     <% for (user of all_users) { %>
         <li><a href="/user/profile/<%= user.id%>"><%= user.name %></a></li>
     <%}%>
     </ol>
+    <% }else{ %>
+        <h1>Side Bar</h1>
+    <% } %>
 </div>
 

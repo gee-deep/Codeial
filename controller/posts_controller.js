@@ -5,10 +5,22 @@ module.exports.create = async function(req, res){
 
     try {
 
-        await Post.create({
+        let newPost = await Post.create({
             content: req.body.content,
             user : req.user._id,
         });
+        let populatedNewPost = await Post.findById(newPost.id).populate('user');
+        if(req.xhr){
+            res.status(200).json({
+                data:{
+                    post:  populatedNewPost,
+                },
+                message:'New Post created'
+            });
+            return;
+
+
+        }
         req.flash('success','Post Created');
         return res.redirect('back');
         

@@ -1,42 +1,50 @@
-<link rel="stylesheet" href="/css/post.css">
-<div class="post-display-box">
+<div class="post-display-box" id="post-<%=post.id %>">
     <div class="post-header">
-            <h6 class="user-name"><%= post.user.name %></h6>
-            <% if(locals.user && locals.user.id === post.user.id) { %>
-            <a href="/post/delete/<%=post.id %>">x</a>
+        <h6 class="user-name">
+            <%= post.user.name %>
+        </h6>
+        <% if(locals.user && locals.user.id===post.user.id) { %>
+            <a class="delete-post-button" href="/post/delete/<%=post.id %>">x</a>
             <% } %>
     </div>
     <div class="post-content">
-        <h3> <%= post.content %> </h3>
+        <h3>
+            <%= post.content %>
+        </h3>
     </div>
     <!-- <div class="post-react">
         <div class="post-react like">Like</div>
         <div class="post-react comment">Comments</div>
         <div class="post-react share">Share</div>
     </div> -->
-    <% if(locals.user) {%>    
+    <% if(locals.user) {%>
         <div>
-            <form action="/comment/create" method="post">
+            <form class="comment-form" action="/comment/create" method="post">
                 <div class="comment-post-form">
                     <input type="hidden" name="post" value="<%= post.id %>">
-                    <input class="comment-box"type="text" name="comment" placeholder="Comment Here" required>
+                    <input class="comment-box" type="text" name="comment" placeholder="Comment Here" required>
                     <input class="comment-box-submit" type="submit" value="Comment">
-            </div>
+                </div>
             </form>
-    </div>
+        </div>
     <% } %>
     <div class="post-comment-container">
         <% for (comment of post.comments) { %>
             <div class="post-comment">
-                <div class="user-name"><a href="#"><%= comment.user.name%></a></div>
-                <div class="comment-content"><%= comment.comment %></div>
-                <% if(locals.user && (locals.user.id === post.user.id || locals.user.id === comment.user.id))  { %>
-                <div class="comment-delete">
-                    <a href="/comment/delete/<%= comment.id%>">X</a>
+                <div class="user-name">
+                    <a href="#">
+                        <%= comment.user.name%>
+                    </a>
                 </div>
+                <div class="comment-content">
+                    <%= comment.comment %>
+                </div>
+                <% if(locals.user && (locals.user.id===post.user.id || locals.user.id===comment.user.id)) { %>
+                    <div class="comment-delete">
+                        <a href="/comment/delete/<%= comment.id%>">X</a>
+                    </div>
                 <% } %>
-            </div>        
+            </div>
         <% } %>
-
     </div>
 </div>

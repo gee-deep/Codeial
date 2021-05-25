@@ -15,6 +15,13 @@ module.exports.createComment = async function(req, res){
 
             post.comments.push(newComment);
             post.save();
+            let new_comment = await Comment.findById(newComment.id).populate('user');
+            if(req.xhr){
+                return res.status(200).json({
+                    comment: new_comment,
+                    message: "Comment Added",
+                });
+            }
             req.flash('success','Comment Added!');
             return res.redirect('back');
         }else{

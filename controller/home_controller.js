@@ -5,9 +5,11 @@ const User = require('../models/users');
 module.exports.home = async function(req,res){
     try{
         let allPosts = await Posts.find({})
+        .sort('-updatedAt')
         .populate('user')
         .populate({
             path:'comments',
+            options: { sort: { updatedAt: -1 } },
             populate: {
                 path: 'user',
             }
