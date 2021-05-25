@@ -3,12 +3,25 @@
 
 <script src="https://use.fontawesome.com/b327d2b014.js"></script>
 
-<% if(locals.user){ %>
-    <%- include('_postform.ejs') -%>
-<% } %>
-<section id="posts">
-    <% for (let post of posts) {%>
-        <%- include('_post.ejs',{post:post}) -%>
+<div class="left">
+    <h1>Side Bar</h1>
+    </div>
+<div class="middle">
+    <% if(locals.user){ %>
+        <%- include('_postform.ejs') -%>
     <% } %>
-</section>
+    <section id="posts">
+        <% for (let post of posts) {%>
+            <%- include('_post.ejs',{post:post}) -%>
+        <% } %>
+    </section>
+</div>
+<div class="right">
+    <h1>Friends</h1>
+    <ol>
+    <% for (user of all_users) { %>
+        <li><a href="/user/profile/<%= user.id%>"><%= user.name %></a></li>
+    <%}%>
+    </ol>
+</div>
 

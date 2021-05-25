@@ -19,6 +19,9 @@
             text-decoration: none;
             font-size: 20px;
         }
+        a:hover{
+            color:white;
+        }
     }
     .post-content{
         min-height:100px;
@@ -68,6 +71,9 @@
             flex: 1;
             margin:5px;
         }
+        .comment-box-submit:hover{
+            background-color:silver;
+        }
 
     }
     .post-comment-container{
@@ -105,6 +111,9 @@
                     font-weight: bold;
                     text-decoration: none;
                     font-size: 15px;
+                }
+                a:hover{
+                    color:white;
                 }
             }
         

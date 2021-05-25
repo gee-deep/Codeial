@@ -1,37 +1,38 @@
 const Post = require('../models/posts');
 const Comments = require('../models/comments');
 
-module.exports.create = function(req, res){
+module.exports.create = async function(req, res){
 
-    Post.create({
-        content: req.body.content,
-        user : req.user._id,
-    },function(err,newPost){
-        if(err){
-            return console.error(err);
-        }
+    try {
+
+        await Post.create({
+            content: req.body.content,
+            user : req.user._id,
+        });
         return res.redirect('back');
+        
+    }catch (error){
 
-    });
+        return console.log("Error creating post", error);
+    }
 
 }
-module.exports.deletePost = function(req,res){
-
-    Post.findById(req.params.id, function(err,post){
-        if(err){
-            console.log('Error!!!',err);
+module.exports.deletePost = async function(req,res){
+    try{
+        let post = await Post.findById(req.params.id);            
+        if(post.user==req.user.id){
+            
+            post.remove();
+            await Comments.deleteMany({post: req.params.id});
             return res.redirect('/');
         }
-        if(!post || post.user != req.user.id){
-            console.log('Unauthorized');
-            return res.redirect('/');
+        else{
+            console.log("UnAuthorised Request");
+            return res.redirect('back');
         }
 
-        post.remove();
-        Comments.deleteMany({post: req.params.id}, function(err){
-            console.log("Error in Deleting Comments.",err);
-        });
-        return res.redirect('/');
-
-    });
+    }catch (error){
+        return console.log("Error",error);
+    }
+    
 }

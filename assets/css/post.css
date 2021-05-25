@@ -18,6 +18,8 @@
       font-weight: bold;
       text-decoration: none;
       font-size: 20px; }
+    .post-display-box .post-header a:hover {
+      color: white; }
   .post-display-box .post-content {
     min-height: 100px;
     display: flex;
@@ -58,6 +60,8 @@
     .post-display-box .comment-post-form .comment-box-submit {
       flex: 1;
       margin: 5px; }
+    .post-display-box .comment-post-form .comment-box-submit:hover {
+      background-color: silver; }
   .post-display-box .post-comment-container {
     display: flex;
     flex-direction: column;
@@ -88,3 +92,5 @@
           font-weight: bold;
           text-decoration: none;
           font-size: 15px; }
+        .post-display-box .post-comment-container .post-comment .comment-delete a:hover {
+          color: white; }

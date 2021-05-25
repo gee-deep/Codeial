@@ -24,3 +24,5 @@
     border-radius: 10px;
     border: 2px solid gray;
     margin-bottom: 5px; }
+  .post-create-box .submit:hover {
+    background-color: silver; }

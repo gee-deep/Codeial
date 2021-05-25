@@ -1,31 +1,54 @@
 const Comment = require('../models/comments');
 const Post = require('../models/posts');
 
-module.exports.createComment = function(req, res){
+module.exports.createComment = async function(req, res){
+    try{
+        
+        let post = await Post.findById(req.body.post);
+        if(post){
 
-    Post.findById(req.body.post,function(err,post){
-        if(err){
-            console.log("Tempered Post Id. Redirecting Back.")
-            return res.redirect('back');
-        }
-        if(!post){
-            console.log("No post");
-            return res.redirect('back');
-        }
-        Comment.create({
-            comment: req.body.comment,
-            post: req.body.post,
-            user: req.user._id
-        },function(err,newComment){
-            if(err) return console.error(err);
-            console.log(newComment);
+            let newComment = await Comment.create({
+                    comment: req.body.comment,
+                    post: req.body.post,
+                    user: req.user._id
+            });
+
             post.comments.push(newComment);
-            post.save()
+            post.save();
             return res.redirect('back');
-        });
-    });    
+        }else{
+            console.error('Invalid Request');
+            return res.redirect('back');
+        }
+
+    }catch(error){
+        return console.error("Error",error);
+
+    }
+
+
+
 }
 
-module.exports.deleteComment = function(req,res){
+module.exports.deleteComment = async function(req,res){
+
+    try{
+        let comment = await Comment.findById(req.params.id);
+        if(comment && comment.user == req.user.id ){
+
+            await Post.findByIdAndUpdate(comment.id,{$pull: {comments: req.params.id}});
+            console.log("Comment Deleted");
+            comment.remove();
+            return res.redirect('back');
+        }else{
+            console.log("Unauthoried Request");
+            return res.redirect('back');
+        }
+
+    }catch(error){
+        return console.error("Error",error);
+
+    }
+
 
 }
