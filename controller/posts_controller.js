@@ -9,10 +9,12 @@ module.exports.create = async function(req, res){
             content: req.body.content,
             user : req.user._id,
         });
+        req.flash('success','Post Created');
         return res.redirect('back');
         
     }catch (error){
 
+        req.flash('error','Something went wrong');
         return console.log("Error creating post", error);
     }
 
@@ -24,14 +26,16 @@ module.exports.deletePost = async function(req,res){
             
             post.remove();
             await Comments.deleteMany({post: req.params.id});
+            req.flash('success','Post deleted successfully');
             return res.redirect('/');
         }
         else{
-            console.log("UnAuthorised Request");
+            req.flash('error','Unauthorised Request');
             return res.redirect('back');
         }
 
     }catch (error){
+        req.flash('error','Something went wrong');
         return console.log("Error",error);
     }
     

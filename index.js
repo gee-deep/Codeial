@@ -10,7 +10,7 @@ const session = require('express-session');
 const sassMiddleware = require('node-sass-middleware');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
-
+const customMware = require('./config/flash-custom-middleware');
 
 
 app.use(sassMiddleware({
@@ -53,7 +53,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 app.use(flash());
-
+app.use(customMware.setFlash)
 app.use('/',require("./routes"));
 
 

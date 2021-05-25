@@ -15,18 +15,18 @@ module.exports.createComment = async function(req, res){
 
             post.comments.push(newComment);
             post.save();
+            req.flash('success','Comment Added!');
             return res.redirect('back');
         }else{
-            console.error('Invalid Request');
+            req.flash('error','Something went wrong');
             return res.redirect('back');
         }
 
     }catch(error){
+        req.flash('error','Something went wrong');
         return console.error("Error",error);
 
     }
-
-
 
 }
 
@@ -39,13 +39,15 @@ module.exports.deleteComment = async function(req,res){
             await Post.findByIdAndUpdate(comment.id,{$pull: {comments: req.params.id}});
             console.log("Comment Deleted");
             comment.remove();
+            req.flash('success','Comment Deleted.');
             return res.redirect('back');
         }else{
-            console.log("Unauthoried Request");
+            creq.flash('error','Aunthorised Request.');
             return res.redirect('back');
         }
 
     }catch(error){
+        req.flash('error','Something went wrong');
         return console.error("Error",error);
 
     }

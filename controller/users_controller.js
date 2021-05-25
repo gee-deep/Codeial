@@ -16,7 +16,7 @@ module.exports.profile = async function(req,res){
 
 module.exports.signUp = function(req,res){
     if(req.isAuthenticated())
-        return res.redirect('/user/profile');
+        return res.redirect('/');
     return res.render('user_signup',{
         title: 'Codeial | Sign Up',
     });
@@ -34,35 +34,43 @@ module.exports.signIn = function(req,res){
 module.exports.create = function(req,res){
     
     if(req.body.password != req.body.confirm_password){
-        console.error("Password Doesn't Match");
+        req.flash('error','Password doesn\'t match')
         return res.redirect('back');
     }
     User.findOne({email: req.body.email},function(err,user){
         if(err) return console.error("Error!!");
         if(!user){
             User.create(req.body,function(err,newUser){
-                if(err) return console.error("Error");
-                console.log(`User Created ${newUser}`);
-                return res.render('user_signin',{
-                    title: 'Sign-in',
-                });
-
+                if(err) {
+                    req.flash('error','Something went wrong');
+                    return console.error("Error");
+                }
+                req.flash('success','Account Created. Sign in to continue.');
+                return res.redirect('/user/sign-in');
             });
         }
         else{
-            console.log("User Already Exists");
+            req.flash('error','User Already Registered');
             return res.redirect('back');
         }
     });
 }
 
 module.exports.createSession = function(req,res){
+
+    req.flash('success','Logged In Successfully');
     return res.redirect('/');
+
 }
+
 module.exports.destroySession = function(req,res){
+    
     req.logout();
+    req.flash('success','You Have been Logged Out');
     return res.redirect('/');
+
 }
+
 module.exports.updateProfile = function(req,res){
     if(req.params.id === req.user.id){
         User.findOne({email: req.body.email}, function(err,user){
@@ -71,17 +79,18 @@ module.exports.updateProfile = function(req,res){
                 User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
                     if(err) return console.error(err);
                     console.log(user);
+                    req.flash('success','User Details Updated');
                     return res.redirect('back');
                 });            
             }else{
-                console.log('Another User with Same Email already exists')
+                req.flash('error','Email Already in use');
                 return res.redirect('back');
             }
             
         })
     }
     else{
-        console.log("UnAuthorised Request");
+        req.flash('error','Unauthorised Request');
         return res.redirect('back');
     }
 }
