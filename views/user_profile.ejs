@@ -1,5 +1,7 @@
 <link rel="stylesheet" href="/css/user_profile.css">
-<div class="left"></div>
+<div class="left">
+    <img src="<%= user.avatar%>">
+</div>
 <div class="middle">
     <% if(locals.user.id ==  requested_user.id){ %>
         <h1>Profile Update</h1>
@@ -7,8 +9,8 @@
         
             <div><input type="text" name="name" value="<%= locals.user.name%>" required></div>
             <div><input type="email" name="email" value="<%= locals.user.email%>" required></div>
-            <div><input type="file" name="avatar" /></div>
-            <input type="submit" value="Update">
+            <div><input type="file" name="avatar" placeholder="Profile Picture"/></div>
+            <input type="submit" value="Update" >
         
         </form>
     
