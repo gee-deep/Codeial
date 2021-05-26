@@ -61,6 +61,7 @@
     addComment();
 
 
+
     let newDOMComment = function(comment){
         return (`
             <div class="post-comment">
@@ -71,7 +72,7 @@
                     ${comment.comment}
                 </div>
                 <div class="comment-delete">
-                    <a href="/comment/delete/${comment.id}">X</a>
+                    <a href="/comment/delete/${comment._id}">X</a>
                 </div>
             </div>    
 

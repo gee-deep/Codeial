@@ -25,4 +25,6 @@
     border: 2px solid gray;
     margin-bottom: 5px; }
   .post-create-box .submit:hover {
-    background-color: silver; }
+    background-color: #274f42;
+    font-weight: bold;
+    color: white; }
