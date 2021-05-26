@@ -3,10 +3,13 @@
 <div class="middle">
     <% if(locals.user.id ==  requested_user.id){ %>
         <h1>Profile Update</h1>
-        <form action="/user/update-profile/<%=locals.user.id%>" class="profile-update" method="post">
-            <input type="text" name="name" value="<%= locals.user.name%>" required>
-            <input type="email" name="email" value="<%= locals.user.email%>" required>
+        <form action="/user/update-profile/<%=locals.user.id%>" class="profile-update" method="post" enctype="multipart/form-data">
+        
+            <div><input type="text" name="name" value="<%= locals.user.name%>" required></div>
+            <div><input type="email" name="email" value="<%= locals.user.email%>" required></div>
+            <div><input type="file" name="avatar" /></div>
             <input type="submit" value="Update">
+        
         </form>
     
     <% } else {%>
