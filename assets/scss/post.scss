@@ -4,8 +4,10 @@
     border-radius: 5px;
     border: 3px solid gray;
     margin-bottom: 10px;
-    background: radial-gradient(circle,rgba(81,81,85,1));
-    color:white;
+    // background: radial-gradient(circle,rgba(81,81,85,1));
+    background-color: white;
+
+    color:black;
     .post-header{
         display: flex;
         align-items: center;
@@ -15,9 +17,13 @@
         justify-content:space-between;
         a{
             color: gray;
+        align-items:center;
+        // margin:2px;
+        a{
+            color:gray;
             font-weight: bold;
             text-decoration: none;
-            font-size: 20px;
+            font-size: 25px;
         }
         a:hover{
             color:white;
@@ -41,6 +47,9 @@
         display: flex;
         align-items:center;
         padding-bottom: 0px;
+        background-color: #3b5998;
+        color: white;
+        font-weight: bold;
         .like{
             flex: 1;
             display: flex;
@@ -117,11 +126,8 @@
                 }
             }
         
-        
-        
-        
         }
 
     }
-
+}
 }
