@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const express = require('express');
+const passport = require('passport');
 const postsController = require('../../../controller/api/v1/posts_api');
 
 router.get('/',postsController.index);
-router.get('/:id', postsController.deletePost);
+router.delete('/:id',passport.authenticate('jwt',{session:false}) ,postsController.deletePost);
 module.exports = router;

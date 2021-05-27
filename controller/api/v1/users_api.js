@@ -20,7 +20,7 @@ module.exports.createToken = async function(req,res){
                 message: 'Authentication Successful.',
                 data: {
                     message: 'Here is the Token. Keep it Safe.',
-                    token: jwt.sign(user.toJSON(), 'NotAsecret', {expiresIn : 1000*60}),
+                    token: jwt.sign(user.toJSON(), 'codeial', {expiresIn : '3600000'}),
                 }
             })
         }
