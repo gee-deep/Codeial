@@ -15,7 +15,7 @@ module.exports.createToken = async function(req,res){
             });
         
         }else{
-            
+
             return res.status(200).json({
                 message: 'Authentication Successful.',
                 data: {
@@ -24,8 +24,7 @@ module.exports.createToken = async function(req,res){
                 }
             })
         }
-    
-
+        
     }catch(e){
         console.log(e);
         return res.status(500).json({
