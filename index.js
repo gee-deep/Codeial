@@ -1,3 +1,5 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const port = 8080;
@@ -7,13 +9,14 @@ const expressLayout = require('express-ejs-layouts');
 const passport = require('passport')
 const passportLocal = require('./config/passport-local-strategy');
 const passportJWT = require('./config/passport-jwt-strategy');
+const passportGoogle = require('./config/passport-googleoauth2-strategy');
 const session = require('express-session');
 const sassMiddleware = require('node-sass-middleware');
 const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const customMware = require('./config/flash-custom-middleware');
-var multer  = require('multer')
-var upload = multer({ dest: 'uploads/' })
+var multer  = require('multer');
+var upload = multer({ dest: 'uploads/' });
 
 
 app.use(sassMiddleware({
@@ -62,7 +65,7 @@ app.use('/',require("./routes"));
 
 
 
-app.listen(port,function(err){
+app.listen(process.env.PORT,function(err){
     if(err) return console.error(`Error: ${err}`);
-    return console.log(`Server is Running on Port: ${port}`);
+    return console.log(`Server is Running on Port: ${process.env.PORT}`);
 });

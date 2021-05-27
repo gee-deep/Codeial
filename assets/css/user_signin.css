@@ -19,3 +19,9 @@
     .sign-in .sign-in-form-submit button {
       width: 30%;
       height: 40px; }
+  .sign-in .google {
+    margin-top: 30px;
+    border-top: 1px solid gray;
+    padding-top: 30px; }
+    .sign-in .google img {
+      height: 60px; }
