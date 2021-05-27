@@ -28,3 +28,9 @@ body {
     padding-left: 20px; }
     .container .right h1 {
       text-align: center; }
+
+.avatar {
+  vertical-align: middle;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; }
