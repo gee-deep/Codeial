@@ -68,11 +68,15 @@
         .comment-box{
             width:75%;
             margin: 5px;
+<<<<<<< HEAD
             border-color: #274f42;
             
         }
         .comment-box:focus{
             box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+=======
+            border:none;
+>>>>>>> master
         }
         .comment-box-submit{
             flex: 1;

@@ -71,26 +71,58 @@ module.exports.destroySession = function(req,res){
 
 }
 
-module.exports.updateProfile = function(req,res){
+module.exports.updateProfile = async function(req,res){
+    // if(req.params.id === req.user.id){
+    //     User.findOne({email: req.body.email}, function(err,user){
+    //         if(err) return console.error(err);
+    //         if(!user || user.id===req.user.id){
+    //             User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+    //                 if(err) return console.error(err);
+    //                 console.log(user);
+    //                 req.flash('success','User Details Updated');
+    //                 return res.redirect('back');
+    //             });            
+    //         }else{
+    //             req.flash('error','Email Already in use');
+    //             return res.redirect('back');
+    //         }
+            
+    //     })
+    // }
+    // else{
+    //     req.flash('error','Unauthorised Request');
+    //     return res.redirect('back');
+    // }
+
     if(req.params.id === req.user.id){
-        User.findOne({email: req.body.email}, function(err,user){
-            if(err) return console.error(err);
-            if(!user || user.id===req.user.id){
-                User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+            try{
+                let user = await User.findById(req.params.id);
+                User.uploadedAvatar(req,res,function(err){
                     if(err) return console.error(err);
-                    console.log(user);
-                    req.flash('success','User Details Updated');
-                    return res.redirect('back');
-                });            
-            }else{
-                req.flash('error','Email Already in use');
+                    User.findOne({email: req.body.email}, function(err,user2){
+                        if(!user2 || user2.id == user.id){
+                            user.name = req.body.name;
+                            user.email = req.body.email;
+                            if(req.file){
+                                user.avatar = User.avatarPath + '\\' + req.file.filename
+                            }
+                            user.save();
+                            return res.redirect('back');
+                        }
+                        else{
+                            req.flash('error','Email Already Registered!');
+                            return res.redirect('back');
+                        }
+                    });
+                });
+            }catch(err){
+                console.error("Error",error);
                 return res.redirect('back');
             }
-            
-        })
+    }else{
+        req.flash('error','Unauthorised Request')
+
     }
-    else{
-        req.flash('error','Unauthorised Request');
-        return res.redirect('back');
-    }
+
+
 }
