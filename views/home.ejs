@@ -1,31 +1,48 @@
 <link rel="stylesheet" href="/css/home.css">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 <link rel="stylesheet" href="/css/post.css">
-<script src="https://use.fontawesome.com/b327d2b014.js"></script>
 
-<div class="left">
-    <h1>Side Bar</h1>
-    </div>
-<div class="middle">
-    <% if(locals.user){ %>
-        <%- include('_postform.ejs') -%>
-    <% } %>
-    <section id="posts-list-container">
-        <% for (let post of posts) {%>
-            <%- include('_post.ejs',{post:post}) -%>
-        <% } %>
-    </section>
-</div>
-<div class="right">
-    <% if(locals.user){ %>
-    <h1>Friends</h1>
-    <ol>
-    <% for (user of all_users) { %>
-        <li><a href="/user/profile/<%= user.id%>"><%= user.name %></a></li>
-    <%}%>
-    </ol>
-    <% }else{ %>
+    <div class="left">
         <h1>Side Bar</h1>
-    <% } %>
-</div>
+    </div>
+    <div class="middle">
+        <% if(locals.user){ %>
+            <%- include('_postform.ejs') -%>
+        <% } %>
+        <section id="posts-list-container">
+            <% for (let post of posts) {%>
+                <%- include('_post.ejs',{post:post}) -%>
+            <% } %>
+        </section>
+    </div>
+    <div class="right">
+        
+        <% if(locals.user){ %>        
+            
+            <h1>Friends</h1>
+            
+            <ol>
+                <% for (let user of all_users) { %>
+                    <li><a href="/user/profile/<%= user.id%>"><%= user.name %></a></li>
+                <% } %>    
+            </ol>
+            
+            <%- include('_chatbox.ejs') -%>
+        
+        <% }else{ %>
+            <h1>Side Bar</h1>
+        <% } %>
 
+    </div>
+
+    <script src="https://use.fontawesome.com/b327d2b014.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/scripts/home_posts.js"></script>
+    <script src="/scripts/chat_engine.js"></script>
+
+    <% if (locals.user) { %>
+        <%= locals.user.email %>
+        <script>
+            new ChatEngine('chat-box','<%= locals.user.email %>')
+        </script>
+    <% } %>
