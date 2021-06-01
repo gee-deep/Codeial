@@ -6,11 +6,12 @@
         <% if(locals.user){ %>        
             
             <h1>Friends</h1>
-            
+
+            <hr color="white">
             <ol>
                 <% for (let user_iter of all_users) { %>
                     <% if(user_iter.id!=user.id) {%>
-                    <li><a href="/user/profile/<%= user_iter.id%>"><%= user_iter.name %></a></li>
+                    <li class="user-friends"><a href="/user/profile/<%= user_iter.id%>"><%= user_iter.name %></a></li>
                     <% } %>
                 <% } %>    
             </ol>

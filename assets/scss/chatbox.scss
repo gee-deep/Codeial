@@ -1,15 +1,14 @@
 #chat-box{
     display:flex;
     flex-direction: column;
-    background: rgb(0,16,36);
-    background: radial-gradient(circle, rgba(0,16,36,1) 0%, rgba(81,81,85,1) 100%);
+    background-color: #efefef;
     position:fixed;
     right:30px;
     bottom:40px;  
     width:350px;
     max-width: 85vw;
     max-height:50vh;
-    box-shadow: 0px 2px 5px 3px rgb(0,16,36);
+    box-shadow: 0px 2px 5px 3px #efefef;
     padding: 5px;
 
     overflow-y:scroll;
@@ -50,7 +49,7 @@
                 padding:0px;
                 margin:0px;
                 margin-bottom: 5px;
-                color: white;
+                color: green;
                 // background: darkkhaki;
             }
             .user-left{
