@@ -9,6 +9,7 @@
             
             <ol>
                 <% for (let user_iter of all_users) { %>
+<<<<<<< HEAD
                     <% if(user_iter.id!=user.id) { %>
                     
                         <li class="user-friends"><a href="/user/profile/<%= user_iter.id%>"><%= user_iter.name %></a></li>
@@ -17,6 +18,14 @@
                 <% } %>    
             </ol>
         <% } %>
+=======
+                    <% if(user_iter.id!=user.id) {%>
+                    <li><a href="/user/profile/<%= user_iter.id%>"><%= user_iter.name %></a></li>
+                    <% } %>
+                <% } %>    
+            </ol>
+            <% } %>
+>>>>>>> master
     </div>
     <div class="middle">
         <% if(locals.user){ %>
@@ -30,10 +39,17 @@
     </div>
     <div class="right">
         
+<<<<<<< HEAD
         <% if(locals.user){ %> 
             
             <%- include('_chatbox.ejs') -%>
         
+=======
+        <% if(locals.user) { %>
+            
+            <%- include('_chatbox.ejs') -%>
+     
+>>>>>>> master
         <% } %>
 
     </div>
