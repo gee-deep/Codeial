@@ -1,14 +1,15 @@
 #chat-box {
   display: flex;
   flex-direction: column;
-  background: #efefef;
+  background: #001024;
+  background: radial-gradient(circle, #001024 0%, #515155 100%);
   position: fixed;
   right: 30px;
   bottom: 40px;
   width: 350px;
   max-width: 85vw;
   max-height: 50vh;
-  box-shadow: 0px 2px 5px 3px #ccc;
+  box-shadow: 0px 2px 5px 3px #001024;
   padding: 5px;
   overflow-y: scroll; }
   #chat-box #messages ul {
@@ -40,7 +41,7 @@
       padding: 0px;
       margin: 0px;
       margin-bottom: 5px;
-      color: green; }
+      color: white; }
     #chat-box #messages ul .user-left {
       float: center;
       padding: 0px;
