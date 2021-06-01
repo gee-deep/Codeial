@@ -18,6 +18,12 @@ const customMware = require('./config/flash-custom-middleware');
 var multer  = require('multer');
 var upload = multer({ dest: 'uploads/' });
 
+//Setting Up Chat Server
+const chatServer = require('http').Server(app);
+const chatSocket = require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(5000);
+console.log('Chat Server is Running');
+
 
 app.use(sassMiddleware({
     src: './assets/scss',
@@ -60,12 +66,32 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
 app.use(flash());
-app.use(customMware.setFlash)
+app.use(customMware.setFlash);
+
+
+
+
+
+
+
+
+
+
+
+
 app.use('/',require("./routes"));
 
 
 
 app.listen(process.env.PORT,function(err){
     if(err) return console.error(`Error: ${err}`);
+    
     return console.log(`Server is Running on Port: ${process.env.PORT}`);
+
+
+    
+
+
+
+
 });
