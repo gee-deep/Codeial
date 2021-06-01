@@ -17,17 +17,17 @@ const flash = require('connect-flash');
 const customMware = require('./config/flash-custom-middleware');
 var multer  = require('multer');
 var upload = multer({ dest: 'uploads/' });
-
+const env = require('./config/environment');
 //Setting Up Chat Server
 const chatServer = require('http').Server(app);
 const chatSocket = require('./config/chat_sockets').chatSockets(chatServer);
 chatServer.listen(5000);
 console.log('Chat Server is Running');
-
+const path = require('path');
 
 app.use(sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
+    src: path.join(__dirname,env.asset_path,'scss'),
+    dest: path.join(__dirname,env.asset_path,'css'),
     prefix: '/css'
 
 }));
@@ -35,7 +35,7 @@ app.use(sassMiddleware({
 app.use(express.urlencoded());
 app.use(cookieParser());
 
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 app.use('/uploads', express.static(__dirname+'/uploads'));
 app.use(expressLayout);
 
@@ -48,11 +48,11 @@ app.set('views','./views');
 
 app.use(session({ 
     name: 'codeial',
-    secret: 'keyboard cat',
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie:{
-        maxAge: (100*60*100)
+        maxAge: (1000*60*60*24)
     },
     store: new MongoStore({
         mongooseConnection :db,

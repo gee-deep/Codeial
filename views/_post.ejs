@@ -32,7 +32,7 @@
         <% for (comment of post.comments) { %>
             <div class="post-comment">
                 <div class="user-name">
-                    <a href="#">
+                    <a href="/user/profile/<%=comment.user.id%>">
                         <%= comment.user.name%>
                     </a>
                 </div>

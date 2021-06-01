@@ -13,14 +13,12 @@ class ChatEngine{
         let self = this;
 
         this.socket.on('connect',function(){
-            console.log('Connection established using Sockets');
         
             self.socket.emit('join_room',{
                 user_email: self.userEmail,
                 chatroom : 'codeial'
             });
             self.socket.on('User_Joined',function(data){
-                console.log('A User joined',data);
                 self.userJoin(data);
             })
             
@@ -41,7 +39,6 @@ class ChatEngine{
         });
 
         self.socket.on('receive_message',function(data){
-            console.log('Message received',data.message);
     
             let newMessage = $('<li>')
 

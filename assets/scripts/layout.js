@@ -21,7 +21,6 @@
                 url: form.prop('action'),
                 data: form.serialize(),
                 success: function(data){
-                    console.log(data.comment);
                     notyNotification('success',data.message);
                     $('.comment-box',form).val("");
                     $('.post-comment-container',$(`#post-${data.comment.post}`)).prepend(newDOMComment(data.comment));
@@ -42,7 +41,7 @@
     let newDOMComment = function(comment){
         return (`
             <div class="post-comment">
-                <div class="user-name"><a href="#">
+                <div class="user-name"><a href="/user/profile/<%=comment.user.id%>">
                         ${comment.user.name}
                     </a></div>
                 <div class="comment-content">
