@@ -8,7 +8,7 @@
         <% if(locals.user){ %>
             <ul class="nav-bar items">
                 <li class="nav-bar-items link"><a href="/user/sign-out">Log Out</a></li>
-                <li class="nav-bar-items link"><a href="/user/profile"><%= user.name %></a></li>
+                <li class="nav-bar-items link"><a href="/user/profile/<%=user.id%>"><%= user.name %></a></li>
             </ul>
         <%  } else { %>
             <ul class="nav-bar items">

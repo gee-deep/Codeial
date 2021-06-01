@@ -3,7 +3,20 @@
 <link rel="stylesheet" href="/css/post.css">
 
     <div class="left">
-        <h1>Side Bar</h1>
+        <% if(locals.user){ %>        
+            
+            <h1>Friends</h1>
+            
+            <ol>
+                <% for (let user_iter of all_users) { %>
+                    <% if(user_iter.id!=user.id) { %>
+                    
+                        <li class="user-friends"><a href="/user/profile/<%= user_iter.id%>"><%= user_iter.name %></a></li>
+                
+                    <% } %>
+                <% } %>    
+            </ol>
+        <% } %>
     </div>
     <div class="middle">
         <% if(locals.user){ %>
@@ -17,20 +30,10 @@
     </div>
     <div class="right">
         
-        <% if(locals.user){ %>        
-            
-            <h1>Friends</h1>
-            
-            <ol>
-                <% for (let user of all_users) { %>
-                    <li><a href="/user/profile/<%= user.id%>"><%= user.name %></a></li>
-                <% } %>    
-            </ol>
+        <% if(locals.user){ %> 
             
             <%- include('_chatbox.ejs') -%>
         
-        <% }else{ %>
-            <h1>Side Bar</h1>
         <% } %>
 
     </div>
@@ -41,7 +44,6 @@
     <script src="/scripts/chat_engine.js"></script>
 
     <% if (locals.user) { %>
-        <%= locals.user.email %>
         <script>
             new ChatEngine('chat-box','<%= locals.user.email %>')
         </script>
