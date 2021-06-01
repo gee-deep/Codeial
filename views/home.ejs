@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="<%= assetPath('css/home.css')%>">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<link rel="stylesheet" href="/css/post.css">
+<link rel="stylesheet" href="<%= assetPath('css/post.css')%>">
 
     <div class="left">
         <% if(locals.user){ %>        
@@ -39,8 +39,8 @@
 
     <script src="https://use.fontawesome.com/b327d2b014.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js" integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="/scripts/home_posts.js"></script>
-    <script src="/scripts/chat_engine.js"></script>
+    <script src="<%= assetPath('scripts/home_posts.js')%>"></script>
+    <script src="<%= assetPath('scripts/chat_engine.js')%>"></script>
 
     <% if (locals.user) { %>
         <script>

@@ -1,9 +1,12 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
+const logger = require('morgan');
+
 const cookieParser = require('cookie-parser');
 const port = 8080;
 const app = express();
+require('./config/view-helpers')(app);
 const db = require('./config/mongoose');
 const expressLayout = require('express-ejs-layouts');
 const passport = require('passport')
@@ -37,6 +40,7 @@ app.use(cookieParser());
 
 app.use(express.static(env.asset_path));
 app.use('/uploads', express.static(__dirname+'/uploads'));
+app.use(logger(env.morgan.mode,env.morgan.options));
 app.use(expressLayout);
 
 

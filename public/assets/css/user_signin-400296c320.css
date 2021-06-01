@@ -1,0 +1,27 @@
+.sign-in {
+  display: flex;
+  flex-direction: column; }
+  .sign-in .heading {
+    text-align: center; }
+  .sign-in form {
+    align-items: center; }
+  .sign-in .sign-in-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px; }
+    .sign-in .sign-in-form input {
+      width: 60%;
+      height: 40px; }
+  .sign-in .sign-in-form-submit {
+    display: flex;
+    justify-content: center; }
+    .sign-in .sign-in-form-submit button {
+      width: 30%;
+      height: 40px; }
+  .sign-in .google {
+    margin-top: 30px;
+    border-top: 1px solid gray;
+    padding-top: 30px; }
+    .sign-in .google img {
+      height: 60px; }
