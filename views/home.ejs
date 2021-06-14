@@ -20,12 +20,15 @@
     <div class="middle">
         <% if(locals.user){ %>
             <%- include('_postform.ejs') -%>
-        <% } %>
+        <% }else{ %>
+            <h1>Welcome Guest</h1>
+            <%}%>
         <section id="posts-list-container">
             <% for (let post of posts) {%>
                 <%- include('_post.ejs',{post:post}) -%>
             <% } %>
         </section>
+
     </div>
     <div class="right">
         

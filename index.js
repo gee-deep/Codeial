@@ -1,5 +1,5 @@
-// const dotenv = require('dotenv');
-// dotenv.config();
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const logger = require('morgan');
 
